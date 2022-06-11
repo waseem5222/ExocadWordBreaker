@@ -1,0 +1,16 @@
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.csproj.AssemblyReference.cache
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.AssemblyInfoInputs.cache
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.AssemblyInfo.cs
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.csproj.CoreCompileInputs.cache
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ExocadWordBreaker.exe
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ExocadWordBreaker.deps.json
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ExocadWordBreaker.runtimeconfig.json
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ExocadWordBreaker.runtimeconfig.dev.json
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ExocadWordBreaker.dll
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ref\ExocadWordBreaker.dll
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\bin\Debug\net5.0\ExocadWordBreaker.pdb
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.dll
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ref\ExocadWordBreaker.dll
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.pdb
+C:\Users\123\Documents\Waseem\ExocadTask\ExocadWordBreaker\obj\Debug\net5.0\ExocadWordBreaker.genruntimeconfig.cache
