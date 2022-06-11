@@ -9,23 +9,26 @@ namespace ExocadWordBreaker
     {
         static void Main(string[] args)
         {
-            string userStr;            
+            string userStr; 
+            //User input of the Text           
             Console.WriteLine("Please enter your sentence:");
             userStr =Console.ReadLine();
 
-            string[] UserStrArr = userStr.Split(new char[]{' ','.',',','<','>','?','/',':',';',']','[','{','}','|','!','@','#','$','%','^','&','*','(',')','_','-','+','='}, StringSplitOptions.RemoveEmptyEntries);            
-            
+            //Spilt of input based on special characerr delmiters as follows
+            string[] UserStrArr = userStr.Split(new char[]{' ','.',',','<','>','?','/',':',';',']','[','{','}','|','!','@','#','$','%','^','&','*','(',')','_','-','+','=','\''}, StringSplitOptions.RemoveEmptyEntries);            
+            //call function for Splitting of words from the user input 
             CounterParam(UserStrArr);
         }
 
+        //function for Splitting of words from the user input 
         static void CounterParam(string[] UserStrArr)
-        {            
+        {
+            //Initialize dictionary colleciton for storing words
             Dictionary<int, string> wordcounts= new Dictionary<int, string>();
-            string temp= String.Empty;
-                               
+            //Temp varialbe to store double quoted string values temporarily
+            string temp= String.Empty;                                           
             foreach(var item in UserStrArr)            
-            {         
-                Console.WriteLine(item);                    
+            {                      
                 if (temp!=String.Empty)
                 {
                     if (item.EndsWith('"'))
