@@ -13,60 +13,102 @@ namespace ExocadWordBreaker
             //User input of the Text           
             Console.WriteLine("Please enter your sentence:");
             userStr =Console.ReadLine();
-
-            //Spilt of input based on special characerr delmiters as follows
-            string[] UserStrArr = userStr.Split(new char[]{' ','.',',','<','>','?','/',':',';',']','[','{','}','|','!','@','#','$','%','^','&','*','(',')','_','-','+','=','\''}, StringSplitOptions.RemoveEmptyEntries);            
-            //call function for Splitting of words from the user input 
-            CounterParam(UserStrArr);
+            
+            if (userStr.Length>0)
+            {
+                //Spilt of input based on special characerr delmiters as follows
+                string[] UserStrArr = userStr.Split(new char[]{' ','.',',','<','>','?','/',':',';',']','[','{','}','|','!','@','#','$','%','^','&','*','(',')','_','-','+','=','€'}, StringSplitOptions.RemoveEmptyEntries);            
+                
+                //function for Splitting of words from the user input
+                bool result = CounterParam(UserStrArr);
+                //print invalid sentence sentence could not broken into words
+                if (!result)
+                    Console.WriteLine("Invalid sentence, words cannot be break");
+            }
+            else
+                Console.WriteLine("Please enter value");
         }
 
         //function for Splitting of words from the user input 
-        static void CounterParam(string[] UserStrArr)
+        static bool CounterParam(string[] UserStrArr)
         {
-            //Initialize dictionary colleciton for storing words
-            Dictionary<int, string> wordcounts= new Dictionary<int, string>();
-            //Temp varialbe to store double quoted string values temporarily
-            string temp= String.Empty;                                           
-            foreach(var item in UserStrArr)            
-            {                      
-                if (temp!=String.Empty)
+            bool result = false;
+            try
+            {
+                if (UserStrArr.Length>0)
                 {
-                    if (item.EndsWith('"'))
+                    //Initialize dictionary colleciton for storing words
+                    Dictionary<int, string> wordcounts= new Dictionary<int, string>();
+                    //Temp varialbe to store double quoted string values temporarily
+                    string temp= String.Empty;                                           
+                    foreach(var word in UserStrArr)            
                     {
-                        temp=temp +" " +item;                        
-                        CheckKeyAndWordToDic(temp.Substring(1, temp.Length-2), wordcounts);                        
-                        temp= String.Empty;                        
+                        if (temp!=String.Empty)
+                        {
+                            if (word.EndsWith('"') || word.EndsWith('\''))
+                            {
+                                temp=temp +" " +word;                        
+                                CheckKeyAndWordToDic(temp.Substring(1, temp.Length-2), wordcounts);                        
+                                temp= String.Empty;                        
+                            }
+                            else
+                                temp=temp +" " +word;
+                        }
+                        else if (word.StartsWith('"') || word.StartsWith('\''))                
+                            temp = word;                
+                        else                
+                            CheckKeyAndWordToDic(word, wordcounts);                                   
+                    }
+
+                    //sort dictionary
+                    if (wordcounts.Count>0)
+                    {
+                        var sortedKeys = wordcounts.Keys.ToList();
+                        sortedKeys.Sort();
+                        int MaxCharacter = sortedKeys.Last();
+
+                        //print all the found and not found number of words
+                        for (int i = 1; i <= MaxCharacter; ++i)
+                        {
+                            if (wordcounts.ContainsKey(i))                              
+                                Console.WriteLine("words with {0} letters occured {1} times (words={2})", i,wordcounts[i].Split(';').Length, wordcounts[i]);                                                        
+                            else
+                                Console.WriteLine("words with {0} letter did not occur",i);
+                        }
+                        result=true;
                     }
                     else
-                        temp=temp +" " +item;
+                        result = false;
                 }
-                else if (item.StartsWith('"'))                
-                    temp = item;                
-                else                
-                    CheckKeyAndWordToDic(item, wordcounts);                                   
+                return result;
             }
-
-            var sortedKeys = wordcounts.Keys.ToList();
-            sortedKeys.Sort();
-            int MaxCharacter = sortedKeys.Last();
-
-            for (int i = 1; i <= MaxCharacter; ++i)
-            {
-                if (wordcounts.ContainsKey(i))                              
-                    Console.WriteLine("words with {0} letters occured {1} times (words={2})", i,wordcounts[i].Split(';').Length, wordcounts[i]);                                                        
-                else
-                    Console.WriteLine("words with {0} letter did not occur",i);
+            catch (System.Exception)
+            {                
+                throw;
             }
         }
-
-        static void CheckKeyAndWordToDic(string word, Dictionary<int, string> wordcounts)
+        
+        //add words to the dictionary
+        static bool CheckKeyAndWordToDic(string word, Dictionary<int, string> wordcounts)
         {
-            if (!word.Any(char.IsDigit) || word.All(char.IsDigit))
+            bool result = false;
+            try
             {
-                if (!wordcounts.ContainsKey(word.Length))
-                    wordcounts.Add(word.Length, word);
-                else
-                    wordcounts[word.Length]+=";" + word;
+                //if no alphanumerical charactes or only digits
+                if (!word.Any(char.IsDigit) || word.All(char.IsDigit))
+                {
+                    if (!wordcounts.ContainsKey(word.Length))
+                        wordcounts.Add(word.Length, word);
+                    else
+                        wordcounts[word.Length]+=";" + word;
+
+                    result= true;
+                }
+                return result;
+            }
+            catch (System.Exception)
+            {                
+                throw;
             }
         }
     }
